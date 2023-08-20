@@ -89,7 +89,7 @@ def status():
     data = requests.get("https://disease.sh/v3/covid-19/historical/israel?lastdays=1")
     if(data.status_code != 200):
         return "{“status”: “fail”}"
-    return "{“status”: “success”}"
+    return "{status: success}"
 
 if __name__ == '__main__':
-    app.run(host="localhost", port=8080)
+    app.run(host="0.0.0.0", port=8000)
