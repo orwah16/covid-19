@@ -2,14 +2,10 @@ pipeline {
   agent {dockerfile true}
   stages {
     stage('Build') {
-      parallel {
-        stage('Build') {
-          steps {
-            sh 'echo "building the repo"'
-            sh "docker build ."
-            sh "docker run -dp 127.0.0.1:8000:8000 app"
-          }
-        }
+      steps {
+        // sh 'echo "building the repo"'
+        // sh 'docker build .'
+        // sh 'docker run -dp 127.0.0.1:8000:8000 app'
       }
     }
   
