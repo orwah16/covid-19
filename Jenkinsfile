@@ -3,11 +3,15 @@ pipeline {
   stages {
 
     stage('init'){
-      def dockerhome = tool '/usr/local/bin:/usr/bin:/bin:/usr/local/opt/lsof/bin:/sbin:/Applications/Docker.app/Contents/Resources/bin/'
-      env.path = "${dockerhome}"
+      steps{
+        def dockerhome = tool '/usr/local/bin:/usr/bin:/bin:/usr/local/opt/lsof/bin:/sbin:/Applications/Docker.app/Contents/Resources/bin/'
+        env.path = "${dockerhome}"
+      }
     }
     stage('checkout'){
+      steps{
         checkout scm
+      }
     }
     
     // stage('Build') {
