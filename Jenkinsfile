@@ -2,25 +2,25 @@ pipeline {
   agent {dockerfile true}
   stages {
 
-    stage('init'){
-      steps{
-        def dockerhome = tool '/usr/local/bin:/usr/bin:/bin:/usr/local/opt/lsof/bin:/sbin:/Applications/Docker.app/Contents/Resources/bin/'
-        env.path = "${dockerhome}"
-      }
-    }
-    stage('checkout'){
-      steps{
-        checkout scm
-      }
-    }
-    
-    // stage('Build') {
-    //   steps {
-    //     sh 'echo "building the repo"'
-    //     sh 'docker build .'
-    //     sh 'docker run -dp 127.0.0.1:8000:8000 app'
+    // stage('init'){
+    //   steps{
+    //   def dockerhome = tool '/usr/local/bin:/usr/bin:/bin:/usr/local/opt/lsof/bin:/sbin:/Applications/Docker.app/Contents/Resources/bin/'
+    //   env.path = "${dockerhome}"
     //   }
     // }
+    // stage('checkout'){
+    //   steps{
+    //     checkout scm
+    //   }
+    // }
+    
+    stage('Build') {
+      steps {
+        sh 'echo "building the repo"'
+        sh 'docker build .'
+        sh 'docker run -dp 127.0.0.1:8000:8000 app'
+      }
+    }
   
     stage('Test') {
       steps {
